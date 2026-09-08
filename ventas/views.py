@@ -13,6 +13,7 @@ def producto_list(request):
     productos = Producto.objects.all()
     return render(request, "ventas/producto_list.html", {"productos": productos})
 
+
 # Registra un nuevo producto.
 def producto_create(request):
     if request.method == "POST":
@@ -23,6 +24,7 @@ def producto_create(request):
     else:
         form = ProductoForm()
     return render(request, "ventas/producto_form.html", {"form": form, "modo": "crear"})
+
 
 # Edita un producto existente (incluye actualizar el stock).
 def producto_update(request, pk):
@@ -35,6 +37,7 @@ def producto_update(request, pk):
     else:
         form = ProductoForm(instance=producto)
     return render(request, "ventas/producto_form.html", {"form": form, "modo": "editar", "producto": producto})
+
 
 # Elimina un producto, previa confirmación.
 def producto_delete(request, pk):
@@ -84,10 +87,12 @@ def venta_create(request):
         form = VentaForm()
     return render(request, "ventas/venta_form.html", {"form": form})
 
+
 # Historial de ventas registradas y detalle de boleta de venta.
 def venta_list(request):
     ventas = Venta.objects.select_related("producto", "cliente").all()
     return render(request, "ventas/venta_list.html", {"ventas": ventas})
+
 
 # Muestra la boleta de una venta recién registrada.
 def boleta_detail(request, pk):
