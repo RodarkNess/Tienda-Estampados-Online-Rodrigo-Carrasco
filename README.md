@@ -10,7 +10,7 @@ Proyecto Django para TI3041 — Programación Backend (Evaluación Sumativa 1).
 
 ```bash
 where python
-python -m venv venv
+python -m venv .venv
 venv\Scripts\activate        # Windows
 # source venv/bin/activate   # Linux/Mac
 
